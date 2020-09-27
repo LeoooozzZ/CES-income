@@ -10,10 +10,11 @@ cesR::get_cescodes()
 cesR::get_ces("ces2019_web")
 
 
+
 cps19_income <- 
   ces2019_web %>%
   select(cps19_income_number)
-
+  
 cps19_income <- na.omit(cps19_income) 
 
 cps19_income1 <-
@@ -27,7 +28,8 @@ cps19_income1 %>%
             var_2018income = var(cps19_income_number))
   
   
-  
+ 
+ 
 cps19_incomecat <-
   ces2019_web %>%
   select(cps19_income_cat)
