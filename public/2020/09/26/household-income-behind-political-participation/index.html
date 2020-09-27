@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.75.1" />
+
+
+<title>Household income behind political participation - A Hugo website</title>
+<meta property="og:title" content="Household income behind political participation - A Hugo website">
+
+
+  <link href='../../../../favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="../../../../css/fonts.css" media="all">
+<link rel="stylesheet" href="../../../../css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="../../../../" class="nav-logo">
+    <img src="../../../../images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="../../../../about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">6 min read</span>
+    
+
+    <h1 class="article-title">Household income behind political participation</h1>
+
+    
+    <span class="article-date">2020-09-26</span>
+    
+
+    <div class="article-content">
+      
+
+
+<p>Author: Shijie Sun</p>
+<div id="abstract" class="section level1">
+<h1>Abstract:</h1>
+<p>We cannot ignore that income matters for our lives in almost all aspects, including living standards, consumption ideas, and investment preferences. In this analysis, I use two variables related to income in the CES dataset and find that most participants are willing to answer the income question. Because of the importance of income, does it help the candidate during an election year if they can propose some scheme for tackling poverty and inequality income? But for this paper, let’s focus on the survey’s income situation and find some useful data for future analysis.</p>
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>On June 13rd, 2019, Toronto Raptors won their first NBA championship in the 2019 NBA Finals. It was also the first time that a Canadian team won the Championship. Bianca Andreescu, who defeated Serena Williams and won the US Open champion in 2019 and became the first Canadian tennis player who wins a Grand Slam title. The same year, the Canadian federal election was held in October. The year 2019 is an extraordinary year for both the country and the people. Because of the special of 2019, I hope to find something interesting in the Canadian Election Study (CES) datasets. During the CES datasets’ data analysis, my central concern is the total household income before taxes for the year 2018. I did some research before about Canadian income. According to the Canadian income survey released on February 24th, 2020, by Statistics Canada, the median after-tax income in 2018 is $61,400. One of my interesting topics is using the CES dataset to observe the survey’s income condition and compare it with the Statistics Canada data.</p>
+<p>Based on the CES data’s income part, I used the income number and income category as my analysis targets. The participant is asked the exact household income number first. Those who did not answer this question will ask for the income category. For the first question, the income number, around 68% of participants answer the question. About 76% of the rest of the participants answer the second question. Because both variables are important, I decided to summarize the income numbers data, which is relatively more observation than income category. I compare this data with the Statistics Canada data, and then I made a histogram for the data of income categories to see the distribution.</p>
+<p>To begin with the analysis, I briefly introduce the CES data and then summarize one of the variables. After that, I made a histogram for other income variables, which is the income category. In the end, discuss the main finding during the analysis and some disadvantages that can be improved.</p>
+</div>
+<div id="data" class="section level1">
+<h1>Data</h1>
+<p>The CES datasets is a large investigation of the citizens during the election year since 1965. There are hundreds of questions, including income, education, gender, age, vote, etc. All of this valuable data embody Canadian’s political preference, and it is also provides a record of Canadian’s social attitude.</p>
+</div>
+<div id="income-number-summarization" class="section level1">
+<h1>Income number summarization</h1>
+<p>The variables I focus on summarizing is the total household income number in 2018. After I omit the non-response answer and outliers, I found that the participant’s mean is 85910 Canadian dollars, and the standard deviation is 87043. As for the comparing data, the median of before-tax income, is $72000 for 25534 participants. Although the after-tax income will depend on where you live, the median is closed to the data provided by Statistics Canada, which is 61400 Canadian dollars after-tax income.</p>
+<pre><code>## # A tibble: 1 x 4
+##   median_2018income sd_2018income mean_2018income var_2018income
+##               &lt;dbl&gt;         &lt;dbl&gt;           &lt;dbl&gt;          &lt;dbl&gt;
+## 1             72000        87044.          85910.    7576574327.</code></pre>
+</div>
+<div id="income-category-graph" class="section level1">
+<h1>Income category graph</h1>
+<p><img src="../../../../post/2015-07-23-r-rmarkdown_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="graph-discussion" class="section level1">
+<h1>Graph Discussion</h1>
+<p>The distribution of the income category in the 2019 CES datasets is skewed right. The mean (red line) of the income category is in the fourth category ($60001 - $90000). The graph shows that the median(cyan line) is in category 3 (before-tax income $30001-$60000). In fact the participant’s actual median perhaps will close to $60000, and this is also detail that can be improved. The graph shows that the median is in category 3; however, the range of category 3 is between 30001 Canadian dollars and 60000 Canadian dollars, which is a relative board interval. If we can narrow the range, we can have a more specific prediction about the income level. The survey will display the income category question if the participant did not answer the income number question. Therefore, the sample size of the income category (9369 observations) is not enough to show all of the participant income levels. Besides that, there is still part of participants who did not answer both of the questions, and it will also cause the inaccurate of the data.</p>
+</div>
+<div id="weakness-and-future-work" class="section level1">
+<h1>Weakness and future work</h1>
+<p>One of the most apparent weaknesses during the analysis is the lack of participants. Although there are 37822 observations, compared with the population in Canada, which is more than 37,000,000, the number of participants is seemingly small. If we can receive a larger sample size, we can predict more accurately. I want to analyze the CES dataset in the future for finding more interesting data. I already have some basic ideas, for example, depending on different income or education levels, which is the primary concern for citizenship during the election year. The topic that I mention in the abstract about the influence of solving poverty for the candidate is also one of my future plans.</p>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<ul>
+<li><p>Stephenson, Laura B; Harell, Allison; Rubenson, Daniel; Loewen, Peter John, 2020, ‘2019 Canadian Election Study - Online Survey’, <a href="https://doi.org/10.7910/DVN/DUS88V" class="uri">https://doi.org/10.7910/DVN/DUS88V</a>, Harvard Dataverse, V1</p></li>
+<li><p>Stephenson, Laura, Allison Harrel, Daniel Rubenson and Peter Loewen. Forthcoming. ‘Measuring Preferences and Behaviour in the 2019 Canadian Election Study,’ Canadian Journal of Political Science.</p></li>
+<li><p>Hadley Wickham, Jim Hester and Winston Chang (2020). devtools: Tools to Make Developing R Packages Easier. R package version 2.3.2.</p></li>
+<li><p>JJ Allaire and Yihui Xie and Jonathan McPherson and Javier Luraschi and Kevin Ushey and Aron Atkins and Hadley Wickham and Joe Cheng and Winston Chang and Richard Iannone (2020). rmarkdown: DynamicDocuments for R. R package version 2.3. URL <a href="https://rmarkdown.rstudio.com" class="uri">https://rmarkdown.rstudio.com</a>.</p></li>
+<li><p>Yihui Xie and J.J. Allaire and Garrett Grolemund (2018). R Markdown:The Definitive Guide. Chapman and Hall/CRC. ISBN 9781138359338. URL <a href="https://bookdown.org/yihui/rmarkdown" class="uri">https://bookdown.org/yihui/rmarkdown</a>.</p></li>
+<li><p>Joseph Larmarange (2020). labelled: Manipulating Labelled Data. R package version 2.7.0. <a href="https://CRAN.R-project.org/package=labelled" class="uri">https://CRAN.R-project.org/package=labelled</a></p></li>
+<li><p>Elin Waring, Michael Quinn, Amelia McNamara, Eduardo Arino de la Rubia, Hao Zhu and Shannon Ellis (2020). skimr: Compact and Flexible Summaries of Data. R package version 2.1.2. <a href="https://CRAN.R-project.org/package=skimr" class="uri">https://CRAN.R-project.org/package=skimr</a></p></li>
+<li><p>Government of Canada, Statistics Canada. “Canadian Income Survey, 2018.” The Daily - , 24 Feb. 2020, www150.statcan.gc.ca/n1/daily-quotidien/200224/dq200224a-eng.htm.</p></li>
+</ul>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="../../../../index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="../../../../images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="../../../../js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+
