@@ -1,1 +1,46 @@
+library(tidyverse)
+library(visdat)
+library(skimr)
+library(labelled)
+library(cesR)
+library(devtools)
 
+
+cesR::get_cescodes()
+cesR::get_ces("ces2019_web")
+
+
+cps19_income <- 
+  ces2019_web %>%
+  select(cps19_income_number)
+
+cps19_income <- na.omit(cps19_income) 
+
+cps19_income1 <-
+  cps19_income %>%
+  filter(cps19_income_number < 5000000)
+
+cps19_income1 %>%
+  summarise(median_2018income = median(cps19_income_number),
+            sd_2018income = sd(cps19_income_number),
+            mean_2018income = mean(cps19_income_number),
+            var_2018income = var(cps19_income_number))
+  
+  
+  
+cps19_incomecat <-
+  ces2019_web %>%
+  select(cps19_income_cat)
+
+cps19_incomecat <- na.omit(cps19_incomecat)
+
+cps19_incomecat <- cps19_incomecat %>%
+  filter(cps19_income_cat < 9 )
+
+cps19_incomecat %>%
+ggplot(aes(x =cps19_income_cat)) +
+  geom_histogram(color = "black" , fill = "darkgrey" , binwidth = 1 ) +
+  labs(x = "income category" , y = "number",
+       title = "Distribution of income category in 2019 CES")+
+  geom_vline(aes(xintercept = median(cps19_income_cat),color = "median"), show.legend = TRUE, size = 2)+
+  geom_vline(aes(xintercept = mean(cps19_income_cat),color = "mean"), show.legend = TRUE, size = 1)
